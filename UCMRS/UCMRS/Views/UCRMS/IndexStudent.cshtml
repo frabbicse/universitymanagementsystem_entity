@@ -1,0 +1,80 @@
+﻿@model UCMRS.Models.View.VM_Student
+
+@{
+    ViewBag.Title = "IndexStudent";
+}
+
+
+<div class="offset-1"> @Html.ActionLink(" ", "AddStudent", "UCRMS", new { @class = "fa fa-plus-square-o fa-2x" })</div>
+<div class="card text-center">
+    <h3 class="card-header"> Students</h3>
+    <div class="card-body">
+        <table class="table table-striped table-bordered table-responsive-md">
+            @{
+                var sl = 0;
+            <tr>
+                <th>SL#</th>
+                <th style="text-align: center">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th style="text-align: center">
+                    @Html.DisplayNameFor(model => model.RegNo)
+                </th>
+                <th style="text-align: center">
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th style="text-align: center">
+                    @Html.DisplayNameFor(model => model.ContactNo)
+                </th>
+                <th style="text-align: center">
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th style="text-align: center">
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th style="text-align: center">
+                    Department
+                </th>
+
+                <th style="text-align: center">Action</th>
+            </tr>
+
+                foreach (var item in Model.VmStudents)
+                {
+                    sl = sl + 1;
+                <tr>
+                    <td style="text-align: right; width: 2%">@sl</td>
+                   
+                    <td style="text-align: left; width: 10%">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td style="text-align: left; width: 10%">
+                        @Html.DisplayFor(modelItem => item.RegNo)
+                    </td>
+                    <td style="text-align: left; width: 10%">
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td style="text-align: left; width: 10%">
+                        @Html.DisplayFor(modelItem => item.ContactNo)
+                    </td>
+                    <td style="text-align: left; width: 8%">
+                        @item.Date.ToShortDateString()
+                    </td>
+                    <td style="text-align: left; width: 17%">
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td style="text-align: left; width: 18%">
+                        @Html.DisplayFor(modelItem => item.DeptName)
+                    </td>
+
+                    <td style="text-align: left; width: 10%">
+                        @Html.ActionLink(" ", "EditStudent", "UCRMS", new { id = item.Id }, new { @class = "btn btn-success btn-xs fa fa-pencil-square-o" })&nbsp;
+                        @Html.ActionLink(" ", "StudentDetails", "UCRMS", new { id = item.Id }, new { @class = "btn btn-success  btn-xs fa fa-external-link" })&nbsp;
+                        @Html.ActionLink(" ", "DeleteStudent", "UCRMS", new { id = item.Id }, new { @class = "btn btn-danger btn-xs fa fa-trash-o" })
+                    </td>
+                </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

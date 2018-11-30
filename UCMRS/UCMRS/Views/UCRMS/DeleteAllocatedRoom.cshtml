@@ -1,0 +1,48 @@
+﻿@model UCMRS.Models.Entity.AllocateRoom
+
+@{
+    ViewBag.Title = "DeleteAllocatedRoom";
+}
+
+
+<div class="card text-center">
+    <h3 class="card-header">Allocated Room</h3>
+    <h5>Are you sure you want to delete this?</h5>
+    <hr />
+    <div class="card-body">
+        <div class="col-md-6">
+            <dl class="dl-horizontal ">
+                <dt>Department</dt>
+                <dd>@ViewBag.allocatedRoom.DeptName</dd>
+
+                <dt>Course</dt>
+                <dd>@ViewBag.allocatedRoom.CourseName </dd>
+
+                <dt>Room No</dt>
+                <dd>@ViewBag.allocatedRoom.RoomNo </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>Day</dt>
+                <dd>@ViewBag.allocatedRoom.DayName </dd>
+
+                <dt>@Html.DisplayNameFor(model => model.TimeFrom)</dt>
+                <dd>@Html.DisplayFor(model => model.TimeFrom)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.TimeTo)</dt>
+                <dd>@Html.DisplayFor(model => model.TimeTo)</dd>
+            </dl>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

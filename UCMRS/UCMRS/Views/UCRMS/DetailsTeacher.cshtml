@@ -1,0 +1,45 @@
+﻿
+@model UCMRS.Models.View.VM_Teacher
+
+@{
+    ViewBag.Title = "DetailsTeacher";
+}
+<hr />
+<div class="card text-center">
+    <h4 class="card-header">@Model.Name's Details</h4>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal font-weight-light">
+                    <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+                    <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Address)</dt>
+                    <dd>@Html.DisplayFor(model => model.Address)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+                    <dd>@Html.DisplayFor(model => model.Email)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.ContactNo)</dt>
+                    <dd>@Html.DisplayFor(model => model.ContactNo)</dd>
+                </dl>
+            </div>
+
+            <div class="col-md-6">
+                <dl class="dl-horizontal font-weight-light">
+                    <dt>@Html.DisplayNameFor(model => model.Designation)</dt>
+                    <dd>@Html.DisplayFor(model => model.Designation)</dd>
+                
+                    <dt>@Html.DisplayNameFor(model => model.DepartmentName)</dt>
+                    <dd>@Html.DisplayFor(model => model.DepartmentName)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.CreditTaken)</dt>
+                    <dd>@Html.DisplayFor(model => model.CreditTaken)</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="pull-right">
+            @Html.ActionLink(" Back to List","IndexTeacher","UCRMS", new { @class= "fa fa-link"})
+        </div>
+    </div>
+</div>

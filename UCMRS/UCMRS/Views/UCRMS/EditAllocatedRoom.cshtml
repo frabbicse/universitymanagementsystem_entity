@@ -1,0 +1,92 @@
+﻿@model UCMRS.Models.Entity.AllocateRoom
+
+@{
+    ViewBag.Title = "EditAllocatedRoom";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="card text-center">
+        <h3 class="card-header">Allocate Room</h3>
+        <hr />
+
+        <div class="card-body">
+            <div class="row form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.DeptId, htmlAttributes: new { @class = "control-label col-md-4 text-left" })
+                    <div class="col-md-8 input-group">
+                        @Html.DropDownListFor(model => model.DeptId, ViewBag.Department as IEnumerable<SelectListItem>,
+                       "Select Department",new { @class = "form-control"})
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-briefcase"></span></span>
+                        @Html.ValidationMessageFor(model => model.DeptId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label col-md-4 text-left" })
+                    <div class="col-md-8 input-group">
+                        @Html.DropDownListFor(model => model.CourseId, ViewBag.Course as IEnumerable<SelectListItem>,
+                       "Select Course",new { @class = "form-control"})
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-book"></span></span>
+                        @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.RoomId, htmlAttributes: new { @class = "control-label col-md-4 text-left" })
+                    <div class="col-md-8 input-group">
+                        @Html.DropDownListFor(model => model.RoomId, ViewBag.Room as IEnumerable<SelectListItem>,
+                       "Select Room No",new { @class = "form-control"})
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+                        @Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.DayId, htmlAttributes: new { @class = "control-label col-md-4 text-left" })
+                    <div class="col-md-8 input-group">
+                        @Html.DropDownListFor(model => model.DayId, ViewBag.Day as IEnumerable<SelectListItem>,
+                       "Select Day", new { @class = "form-control"})
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        @Html.ValidationMessageFor(model => model.DayId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6 ">
+                    @Html.LabelFor(model => model.TimeFrom, htmlAttributes: new { @class = "control-label col-md-4 text-left" })
+                    <div class="col-md-8 input-group">
+                        @Html.EditorFor(model => model.TimeFrom, new { htmlAttributes = new { @class = "form-control" } })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                        @Html.ValidationMessageFor(model => model.TimeFrom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.TimeTo, htmlAttributes: new { @class = "control-label col-md-4 text-left" })
+                    <div class="col-md-8 input-group date">
+                        @Html.EditorFor(model => model.TimeTo, new { htmlAttributes = new { @class = "form-control " } })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                        @Html.ValidationMessageFor(model => model.TimeTo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6"> </div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary pull-right">Update &nbsp;&nbsp;<i class="fa fa-plus-circle"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,47 @@
+﻿@model UCMRS.Models.View.VM_EnrollCourse
+
+@{
+    ViewBag.Title = "IndexEnrollCourrse";
+}
+<div class="offset-1"> @Html.ActionLink(" ", "AddEnrollCourse", "UCRMS", new { @class = "fa fa-plus-square-o fa-2x" })</div>
+
+<div class="card text-center">
+    <h3 class="card-header"> Enrolled Courses</h3><hr/>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th style="text-align: center">SL#</th>
+                <th style="text-align: center">RegNo</th>
+                <th style="text-align: center">Course</th>
+                <th style="text-align: center">DateTime</th>
+                <th style="text-align: center">Action</th>
+            </tr>
+
+            @{
+                var sl = 0;
+                foreach (var item in Model.EnrollCourses)
+                {
+                    sl = sl + 1;
+                    <tr>
+                        <td style="text-align: right; width: auto">@sl</td>
+                        <td style="text-align: left; width: auto">
+                            @Html.DisplayFor(modelItem => item.RegNo)
+                        </td>
+                        <td style="text-align: left; width: auto">
+                            @Html.DisplayFor(modelItem => item.CourseName)
+                        </td>
+                        <td style="text-align: left; width: auto">
+                            @item.DateTime.ToShortDateString()
+                        </td>
+                        <td>
+                            @Html.ActionLink(" ", "EditEnrollCourse", "UCRMS", new {id = item.Id}, new {@class = "btn btn-success btn-xs fa fa-pencil-square-o"})&nbsp;
+                            @*@Html.ActionLink(" ", "CourseDetails", "UCRMS", new { id = item.Id }, new { @class = "btn btn-success  btn-xs fa fa-external-link" })&nbsp;*@
+                            @Html.ActionLink(" ", "DeleteEnrollCourse", "UCRMS", new {id = item.Id}, new {@class = "btn btn-danger btn-xs fa fa-trash-o"})
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
+

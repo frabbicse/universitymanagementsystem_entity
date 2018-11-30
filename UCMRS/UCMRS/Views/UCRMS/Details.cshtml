@@ -1,0 +1,40 @@
+﻿@model UCMRS.Models.Entity.Department
+
+@{
+    ViewBag.Title = "Details";
+}
+<hr/>
+<div class="card text-center">
+    <h4 class="card-header">Department</h4>
+    <hr />
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal font-weight-light">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Code)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <dl class="dl-horizontal font-weight-light">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="pull-right">
+            @Html.ActionLink(" Back to List","Index","UCRMS", new { @class= "fa fa-link"})
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,44 @@
+﻿@model UCMRS.Models.View.VM_CourseAssign
+
+@{
+    ViewBag.Title = "IndexCourseAssign";
+}
+<br />
+<div class="offset-1"> @Html.ActionLink(" ", "AddCourseToAssign", "UCRMS", new { @class = "fa fa-plus-square-o fa-2x" })</div>
+
+<div class="card">
+    <div class="card-header"></div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>SL</th>
+                <th>@Html.DisplayNameFor(model => model.Department)</th>
+                <th>@Html.DisplayNameFor(model => model.TeacherName)</th>
+                <th>@Html.DisplayNameFor(model => model.CourseName)</th>
+                <th>@Html.DisplayNameFor(model => model.Credit)</th>
+                <th>Action</th>
+            </tr>
+            @{ int a = 0;}
+            @foreach (var item in Model.CourseAssigns)
+            {
+                a = a + 1;
+                <tr>
+                    <td>@a</td>
+                    <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TeacherName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CourseName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Credit)</td>
+
+                    <td>
+                        @Html.ActionLink(" ", "EditAssigendCourse", "UCRMS", new { id = item.Id }, new { @class = "btn btn-success btn-sm fa fa-pencil-square-o" })&nbsp;
+                        @Html.ActionLink(" ", "DeleteAssignedCourse", "UCRMS", new { id = item.Id }, new { @class = "btn btn-danger btn-sm fa fa-trash" })&nbsp;
+                        @* @Html.ActionLink(" ", "DetailsTeacher", "UCRMS", new { id = item.Id }, new { @class = "btn btn-success btn-sm fa fa-external-link" })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+

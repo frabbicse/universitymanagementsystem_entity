@@ -1,0 +1,80 @@
+﻿@if (Session["success_div"] != null && Session["success_div"].ToString() == "true")
+{
+    Session["success_div"] = null;
+    <text>
+        <script>
+        swal.setDefaults({
+            confirmButtonColor: '#9CD159',
+            showLoaderOnConfirm: true,
+            allowOutsideClick: true
+        });
+        swal({
+            title: 'Success!',
+            text: '@Session["success_msg"].ToString()',
+            html: '@Session["success_msg"].ToString()',
+            type: 'success'
+        });
+        </script>
+    </text>
+    Session["success_msg"] = null;
+}
+else if (Session["error_div"] != null && Session["error_div"].ToString() == "true")
+{
+    Session["error_div"] = null;
+    <text>
+        <script>
+        swal.setDefaults({
+            confirmButtonColor: '#9CD159',
+            showLoaderOnConfirm: true,
+            allowOutsideClick: true
+        });
+        swal({
+            title: 'ERROR!',
+            text: '@Session["error_msg"].ToString()',
+            html: '@Session["error_msg"].ToString()',
+            type: 'error'
+        });
+        </script>
+    </text>
+    Session["error_msg"] = null;
+}
+else if (Session["warning_div"] != null && Session["warning_div"].ToString() == "true")
+{
+    Session["warning_div"] = null;
+    <text>
+        <script>
+        swal.setDefaults({
+            confirmButtonColor: '#9CD159',
+            showLoaderOnConfirm: true,
+            allowOutsideClick: true
+        });
+        swal({
+            title: 'WARNING!',
+            text: '@Session["warning_msg"].ToString()',
+            html: '@Session["warning_msg"].ToString()',
+            type: 'warning'
+        });
+        </script>
+    </text>
+    Session["warning_msg"] = null;
+}
+else if (Session["info_div"] != null && Session["info_div"].ToString() == "true")
+{
+    Session["info_div"] = null;
+    <text>
+        <script>
+        swal.setDefaults({
+            confirmButtonColor: '#9CD159',
+            showLoaderOnConfirm: true,
+            allowOutsideClick: true
+        });
+        swal({
+            title: 'INFO!',
+            text: '@Session["info_msg"].ToString()',
+            html: '@Session["info_msg"].ToString()',
+            type: 'info'
+        });
+        </script>
+    </text>
+    Session["info_msg"] = null;
+}

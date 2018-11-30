@@ -1,0 +1,13 @@
+{
+  "User": {
+    "Id": 1764639,
+    "Username": "frabbi.oss",
+    "Name": "Fazle Rabbi",
+    "Email": "fazle.rabbi@oss.com.bd",
+    "AvatarUrl": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/1764639/avatar.png",
+    "PrivateToken": "7fa4916d8c0cdfca746a03295da2ba0b1348e966947745e36fe14cfa290fb984",
+    "Host": "https://gitlab.com",
+    "TwoFactorEnabled": false,
+    "ApiVersion": 3
+  }
+}

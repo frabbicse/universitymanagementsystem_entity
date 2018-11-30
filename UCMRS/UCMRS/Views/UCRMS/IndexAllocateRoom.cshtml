@@ -1,0 +1,47 @@
+﻿@model UCMRS.Models.View.VM_AllocateRooms
+
+@{
+    ViewBag.Title = "IndexAllocateRoom";
+}
+
+<div class="offset-1"> @Html.ActionLink(" ", "AddAllocatedRoom", "UCRMS", new { @class = "fa fa-plus-square-o fa-2x" })</div>
+<div class="card text-center">
+    <h3 class="card-header">Allocated Rooms</h3>
+    <div class="card-body">
+           <table class="table table-striped table-bordered">
+               <tr>
+                   <th>SL#</th>
+                   <th>@Html.DisplayNameFor(model => model.DeptName)</th>
+                   <th>@Html.DisplayNameFor(model => model.CourseName)</th>
+                   <th>@Html.DisplayNameFor(model => model.RoomNo)</th>
+                   <th>@Html.DisplayNameFor(model => model.DayName)</th>
+                   <th>@Html.DisplayNameFor(model => model.TimeFrom)</th>
+                   <th>@Html.DisplayNameFor(model => model.TimeTo)</th>
+                   <th>Action</th>
+               </tr>
+           @{
+               var sl = 0;
+               foreach (var item in Model.Rooms)
+               {
+                   sl = sl + 1;
+                   <tr>
+                       <td>@sl</td>
+                       <td>@Html.DisplayFor(modelItem => item.DeptName)</td>
+                       <td>@Html.DisplayFor(modelItem => item.CourseName)</td>
+                       <td>@Html.DisplayFor(modelItem => item.RoomNo)</td>
+                       <td>@Html.DisplayFor(modelItem => item.DayName)</td>
+                       <td>@item.TimeFrom.ToShortTimeString()</td>
+                       <td>@item.TimeTo.ToShortTimeString()</td>
+                       <td>
+                           @Html.ActionLink(" ", "EditAllocatedRoom","UCRMS", new {id = item.Id}, new {@class = "btn btn-success btn-xs fa fa-pencil-square-o"})&nbsp;
+                           @*@Html.ActionLink(" ", "CourseDetails", "UCRMS", new { id = item.Id }, new { @class = "btn btn-success  btn-xs fa fa-external-link" })&nbsp;*@
+                           @Html.ActionLink(" ", "DeleteAllocatedRoom", "UCRMS", new {id = item.Id}, new { @class = "btn btn-danger btn-xs fa fa-trash-o" })
+                       </td>
+                   </tr>
+               }
+           }
+           </table>
+      
+    </div>
+</div>
+

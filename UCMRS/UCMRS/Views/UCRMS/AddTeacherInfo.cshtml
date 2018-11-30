@@ -1,0 +1,89 @@
+﻿@model UCMRS.Models.View.VM_Teacher
+
+@{
+    ViewBag.Title = "AddTeacherInfo";
+}
+
+
+@using (Html.BeginForm("AddTeacherInfo", "UCRMS", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="card text-center text-justify">
+        <h3 class="card-header">Teacher Information</h3>
+        <div class="card-body">
+            <div class="row form-group">
+                <div class="col-md-6">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-left" })
+                   <div class="col-md-8">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-4  text-left" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4  text-left" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                        @Html.LabelFor(model => model.ContactNo, htmlAttributes: new { @class = "control-label col-md-4  text-left" })
+                   <div class="col-md-8">
+                        @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                        @Html.LabelFor(model => model.DeptId, htmlAttributes: new { @class = "control-label col-md-4  text-left" })
+                    <div class=" col-md-8">
+                        @Html.DropDownListFor(model => model.DeptId, ViewBag.Department as IEnumerable<SelectListItem>,
+                     "Select Department", new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.DeptId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                        @Html.LabelFor(model => model.DesigId, htmlAttributes: new { @class = "control-label col-md-4  text-left" })
+                    <div class=" col-md-8">
+                        @Html.DropDownListFor(model => model.DesigId, ViewBag.Designation as IEnumerable<SelectListItem>,
+                            "Select Designation",new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.DesigId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-6">
+                        @Html.LabelFor(model => model.CreditTaken, htmlAttributes: new { @class = "control-label col-md-4  text-left" })
+                   <div class=" col-md-8">
+                        @Html.EditorFor(model => model.CreditTaken, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CreditTaken, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class=" col-md-6"></div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary pull-right">Add&nbsp;<i class="fa fa-plus-circle"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

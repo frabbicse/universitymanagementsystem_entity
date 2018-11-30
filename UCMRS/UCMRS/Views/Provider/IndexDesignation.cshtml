@@ -1,0 +1,42 @@
+﻿@model IEnumerable<UCMRS.Models.DB.Designation>
+
+@{
+    ViewBag.Title = "IndexDesignation";
+}
+@Html.ActionLink("Create New", "SaveDesignation", "Provider")
+<div class="card">
+    <div class="card-header">Designations</div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>SL</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+
+            @{
+                int a = 0;
+                foreach (var item in Model)
+                {
+                    a = a + 1;
+                    <tr>
+                        <td>@a</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td></td>
+                        @*<td>
+                                @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                                @Html.ActionLink("Details", "Details", new {id = item.Id}) |
+                                @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+                            </td>*@
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+</div>
+

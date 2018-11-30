@@ -1,0 +1,43 @@
+﻿@model UCMRS.Models.View.VM_Course
+
+@{
+    ViewBag.Title = "CourseDetails";
+}
+
+<div class="card text-center">
+    <h4 class="card-header">Course</h4>
+    <hr />
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal font-weight-light">
+                    <dt>@Html.DisplayNameFor(model => model.Code)</dt>
+                    <dd>@Html.DisplayFor(model => model.Code)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+                    <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Credit)</dt>
+                    <dd>@Html.DisplayFor(model => model.Credit)</dd>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <dl class="dl-horizontal font-weight-light">
+                    <dt>@Html.DisplayNameFor(model => model.Description)</dt>
+                    <dd>@Html.DisplayFor(model => model.Description)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.DeptName)</dt>
+                    <dd>@Html.DisplayFor(model => model.DeptName)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.SemesterName)</dt>
+                    <dd>@Html.DisplayFor(model => model.SemesterName)</dd>
+                </dl>
+            </div>
+        
+        </div>
+    
+        <div class="pull-right">
+            @Html.ActionLink(" Back to List","IndexCourse","UCRMS", new { @class= "fa fa-link"})
+        </div>
+    </div>
+</div>

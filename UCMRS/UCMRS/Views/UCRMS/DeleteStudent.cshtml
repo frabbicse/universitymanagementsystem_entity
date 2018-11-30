@@ -1,0 +1,54 @@
+﻿@model UCMRS.Models.Entity.Student
+
+@{
+    ViewBag.Title = "DeleteStudent";
+}
+
+
+
+<div class="card text-center ">
+    <h3 class="card-header">Student</h3>
+    <h4>Are you sure you want to delete this?</h4>
+    <hr />
+    <div class="card-body">
+        
+        <div class="col-md-6">
+            <dl class="dl-horizontal font-weight-light">
+                <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+                <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.RegNo)</dt>
+                <dd>@Html.DisplayFor(model => model.RegNo)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+                <dd>@Html.DisplayFor(model => model.Email)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.ContactNo)</dt>
+                <dd>@Html.DisplayFor(model => model.ContactNo)</dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <dl class="dl-horizontal font-weight-light">
+                <dt>@Html.DisplayNameFor(model => model.Date)</dt>
+                <dd>@Html.DisplayFor(model => model.Date)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.Address)</dt>
+                <dd>@Html.DisplayFor(model => model.Address)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.DeptId)</dt>
+                <dd>@ViewBag.student.DeptName@*Html.DisplayFor(model => model.DeptId)*@</dd>
+
+            </dl>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

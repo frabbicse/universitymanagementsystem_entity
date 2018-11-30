@@ -1,0 +1,41 @@
+﻿@model IEnumerable<UCMRS.Models.DB.Semester>
+
+@{
+    ViewBag.Title = "SemesterIndex";
+}
+
+@Html.ActionLink("Add Semester", "SaveSemester", "Provider")
+
+<div class="card">
+    <div class="card-header">
+        Semesters
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>SL#</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+            @{ var a = 0;}
+            @foreach (var item in Model)
+            {
+                a = a + 1;
+                <tr>
+                    <td>@a</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "Edit", "Provider", new { id = item.Id }, new { @class = "btn btn-success btn-sm fa fa-pencil-square-o" })&nbsp;
+                        @Html.ActionLink(" ", "Delete", "Provider", new { id = item.Id }, new { @class = "btn btn-danger btn-sm fa fa-trash" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+

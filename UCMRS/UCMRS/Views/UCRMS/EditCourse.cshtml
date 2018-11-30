@@ -1,0 +1,91 @@
+﻿@model UCMRS.Models.Entity.Course
+
+@{
+    ViewBag.Title = "EditCourse";
+}
+@using (Html.BeginForm("EditCourse","UCRMS",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+<div class="card text-center ">
+    <h3 class="card-header">Course</h3>
+    <div class="card-body">
+        <div class="row form-group">
+            <div class="col-md-6">
+                <div class="col-md-4"> 
+                        @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "col-form-label text-left" })
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Code, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Code, "", new {@class = "text-danger"})
+                    </div> 
+            </div>
+            <div class="col-md-6"> 
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-form-label text-left" })
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
+                    </div> 
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-6">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Credit, htmlAttributes: new { @class = "col-form-label text-left" })
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Credit, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Credit, "", new {@class = "text-danger"})
+                    </div>
+            </div>
+            <div class="col-md-6">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-form-label text-left" })
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-6">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.DeptId, htmlAttributes: new {@class = "col-form-label text-left" })
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.DeptId, ViewBag.Dept as IEnumerable<SelectListItem>,
+                            "Select Department", new {@class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.DeptId, "", new {@class = "text-danger"})
+                    </div>
+            </div>
+            <div class="col-md-6">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.SemId, htmlAttributes: new { @class = "col-form-label text-left" })
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.SemId, ViewBag.Semesters as IEnumerable<SelectListItem>,
+                            "Select Semester", new {@class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.SemId, "", new { @class = "text-danger" })
+                    </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <button class="btn btn-primary float-right">Save &nbsp;&nbsp; <i class="fa fa-edit"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,49 @@
+﻿@model UCMRS.Models.View.VM_Course
+
+@{
+    ViewBag.Title = "IndexCourse";
+}
+<div class="offset-1"> @Html.ActionLink(" ", "CreateCourse", "UCRMS", new { @class = "fa fa-plus-square-o fa-2x" })</div>
+<div class="card text-center">
+    <h3 class="card-header"> Course Information</h3>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th style="text-align: center">SL#</th>
+                <th style="text-align: center">Code</th>
+                <th style="text-align: center">Name</th>
+                <th style="text-align: center">Credit</th>
+                <th style="text-align: center">Description</th>
+                <th style="text-align: center">Department</th>
+                <th style="text-align: center">Semester</th>
+                <th style="text-align: center">Action</th>
+            </tr>
+            @{
+                if (Model != null)
+                {
+                    
+                    int a = 0;
+                    foreach (var item in Model.Courses)
+                    {
+                        a = a + 1;
+                        <tr>
+                            <td style="text-align: right;width:1%  ">@a</td>
+                            <td style="text-align: left;width:9% "> @item.Code</td>
+                            <td style="text-align: left;width:20% ">@item.Name</td>
+                            <td style="text-align: left;width:5% ">@item.Credit</td>
+                            <td style="text-align: left;width:22% ">@item.Description</td>
+                            <td style="text-align: left;width:25% ">@item.DeptName</td>
+                            <td style="text-align: left;width:8% ">@item.SemesterName</td>
+                            <td style="text-align: left;width:13% ">
+                                @Html.ActionLink(" ", "EditCourse","UCRMS", new {id = item.Id}, new {@class = "btn btn-success btn-xs fa fa-pencil-square-o"})&nbsp;
+                                @Html.ActionLink(" ", "CourseDetails", "UCRMS", new { id = item.Id }, new { @class = "btn btn-success  btn-xs fa fa-external-link" })&nbsp;
+                                @Html.ActionLink(" ", "DeleteCourse", "UCRMS", new {id = item.Id}, new { @class = "btn btn-danger btn-xs fa fa-trash-o" })
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </table>
+    </div>
+</div>
+
